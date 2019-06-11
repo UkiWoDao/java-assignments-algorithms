@@ -1,0 +1,31 @@
+package challenge1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// check BankAccount functionality
+		
+		BankAccount ba1 = new BankAccount();
+		
+		ba1.setAccountNumber();
+		System.out.println(ba1.getAccountNumber());
+		
+		// check if default balance is 0
+		System.out.println(ba1.getBalance());
+		
+		ba1.setBalance(1000);
+		System.out.println(ba1.getBalance());
+		
+		// check withdrawal of funds
+		ba1.withdrawFunds(500);
+		System.out.println(ba1.getBalance());
+		
+		ba1.withdrawFunds(501);
+		System.out.println(ba1.getBalance());
+		
+		// check depositing funds
+		ba1.depositFunds(1000);
+		System.out.println(ba1.getBalance());
+	}
+
+}
