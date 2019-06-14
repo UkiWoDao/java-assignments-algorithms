@@ -9,7 +9,6 @@ public class Covek {
 	
 	public Covek(int i) {
 		this("Srba", 80);
-		System.out.println("Podrazumevani konstruktor");
 	}
 	
 	public Covek(String ime) {

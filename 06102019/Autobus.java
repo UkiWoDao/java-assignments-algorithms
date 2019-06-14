@@ -23,6 +23,15 @@ public class Autobus {
 		}
 	}
 	
+	public void dodatiVozaca(Vozac v) {
+		if(vozac == null) {
+			vozac = v;
+			System.out.println("Novi vozac je postavljen");
+		} else {
+			System.out.println("Vec postoji vozac");
+		}
+	}
+	
 	public void sklonitiVozaca() {
 		if(vozac == null) {
 			System.out.println("Vozaca ionako nema");
@@ -45,14 +54,11 @@ public class Autobus {
 			return;
 		} 
 		
-		// provera da li je autobus pun
-		if(putnici != null){
-			return;
-		} else {
-			for(int k = 1; k < putnici.length; k++) {
-				if(putnici[k] == null) {
-					putnici[k] = p;
-				}
+		// provera da li je mesto zauzeto
+		for(int k = 1; k < putnici.length; k++) {
+			if(putnici[k] == null) {
+				putnici[k] = p;
+				return;
 			}
 		}
 	}
@@ -60,10 +66,29 @@ public class Autobus {
 	public void naplatitiNesrecnicima() {
 		if(this.imaVozac() == true) {
 			for(int i = 0; i < putnici.length; i++) {
-				if(putnici[i].getNovac() < this.cenaKarte) {
-					putnici[i] = null;
+				if(putnici[i] != null) {
+					if(putnici[i].getNovac() < this.cenaKarte) {
+						putnici[i] = null;
+					} else {
+						putnici[i].oduzmiNovac(this.cenaKarte);
+					}
 				}
 			}
-		} else return;
+		} else {
+			System.out.println("Nemoguce naplatiti kad nema vozaca");
+		}
+	}
+	
+	public String toString() {
+		String s = "[" + this.naziv + "]{" + this.cenaKarte + "}";
+		if(this.imaVozac()) {
+			s += vozac.getIme() + "\n";
+		}
+		for(int i = 0; i < putnici.length; i++) {
+			if(putnici[i] != null) {
+				s += putnici[i].ispis() + "\n";
+			}
+		}
+		return s;
 	}
 }
