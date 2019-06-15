@@ -1,0 +1,68 @@
+package domaci06112019;
+
+import java.text.DecimalFormat;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// za ulepsavanje ide() rezultata i trenGor
+		DecimalFormat f = new DecimalFormat("##.00");
+		
+		// PROVERA ZA AUTO
+		Automobil a1 = new Automobil(1487, 300, 2);
+		
+		// provera da li ce auto ici bez da mu se prvo doda gorivo
+		a1.ide(10);
+		
+		// provera prekoracenja kapaciteta rezervoara
+		a1.dodajCorbu(301);
+		
+		// provera dodavanja goriva negativnim brojevima
+		a1.dodajCorbu(-100);
+		
+		// provera trenutnog goriva
+		System.out.println("Trenutno gorivo je " + a1.trenGor);
+		a1.dodajCorbu(50);
+		System.out.println("A nakon dodavanja je " + a1.trenGor);
+		
+		// provera da li ide kada ima dovoljno goriva
+		System.out.println("Auto ce preci svih " + a1.ide(10) + "km");
+		System.out.println(a1.toString());
+		
+		// provera da li ide kada nema dovoljno goriva
+		System.out.println("Preci ce samo " + f.format(a1.ide(5000)));
+		
+		// provera setera za regBroj
+		a1.setRegBroj(12);
+		System.out.println(a1.toString());
+		
+		
+		// PROVERA ZA TERETNO VOZILO
+		Teretno t1 = new Teretno(124097, 1500, 7);
+		
+		// provera da li ce teretno vozilo ici bez da mu se prvo doda gorivo
+		t1.ide(10);
+		
+		// provera prekoracenja kapaciteta rezervoara
+		t1.dodajCorbu(101);
+		
+		// provera dodavanja goriva negativnim brojevima
+		t1.dodajCorbu(-100);
+		
+		// provera trenutnog goriva
+		System.out.println("Trenutno gorivo je " + t1.trenGor);
+		t1.dodajCorbu(50);
+		System.out.println("A nakon dodavanja je " + t1.trenGor);
+		
+		// provera da li ide kada ima dovoljno goriva
+		System.out.println("Auto ce preci svih " + t1.ide(100) + "km");
+		System.out.println(t1.toString());
+		
+		// provera da li ide kada nema dovoljno goriva
+		System.out.println("Preci ce samo " + f.format(t1.ide(5000)));
+		
+		System.out.println(t1.toString());
+	}
+
+}
